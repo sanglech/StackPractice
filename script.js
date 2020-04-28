@@ -1,6 +1,6 @@
 // Select text input
 const textInput = document.getElementById('Name');// Store the value of the input in a variable
-let aName = textInput.value;// When an input event is triggered update cityName
+let aName = textInput.value;// When an input event is triggered update
 textInput.addEventListener('input', function(e) {
     aName = e.target.value;
 })// Select our form
@@ -19,6 +19,7 @@ form.addEventListener('submit', function(e) {
         name.innerHTML = 'Name: ' + response.data.aName;
         genre.innerHTML = 'Genre: ' + response.data.genre;
         jName.innerHTML = 'Japanese Name: ' + response.data.jName;
+        document.getElementById("aImg").src = response.data.imgSrc;
       } else {
         errorMessage.innerHTML = "This anime is not in our database"
       }
