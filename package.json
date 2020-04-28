@@ -9,9 +9,12 @@
   "author": "Christian Sangle",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "mssql": "^6.2.0"
+    "jquery": "^3.5.0",
+    "mssql": "^6.2.0",
+    "popper": "^1.0.1"
   }
 }

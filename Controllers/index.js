@@ -1,10 +1,10 @@
 const fs = require('fs');
-const rawdata=fs.readFileSync('dbuser.json');
+const rawdata=fs.readFileSync('../Models/dbuser.json');
 const userInfo=JSON.parse(rawdata);
 var mssql = require('mssql');
 const express = require('express'); // import express
 const app = express(); // initialize express
-const anime = require('./Models/Data.js'); // import data
+const anime = require('../Models/Data.js'); // import data
 const cors = require('cors'); // import cors package
 
 // Enable all CORS requests

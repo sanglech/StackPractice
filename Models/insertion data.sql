@@ -8,7 +8,7 @@ CREATE TABLE Anime
  imgSrc varchar (255) 
 );  
 
-INSERT INTO Anime (aName ,jName,genre,watched)
+INSERT INTO Anime (aName ,jName,genre,watched,imgSrc)
 VALUES
     (
     'My Hero Acadamia',
