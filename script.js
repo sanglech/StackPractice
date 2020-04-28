@@ -11,13 +11,14 @@ form.addEventListener('submit', function(e) {
   axios.get('http://localhost:3000/anime/?name=' + aName)
     .then(function(response) {
       // select elements
+      //console.log("RESPONSE:"+JSON.stringify(response)); PrintJSON Response for debugging purposes
       let name = document.querySelector('.Name');
       let genre = document.querySelector('.Genre');
       let jName = document.querySelector('.Japanese_Name');
-      let errorMessage = document.querySelector('.error-message');if (response.data.Name) {
-        name.innerHTML = 'Name: ' + response.data.Name;
-        genre.innerHTML = 'Genre: ' + response.data.Genre;
-        jName.innerHTML = 'Japanese Name: ' + response.data.Japanese_Name;
+      let errorMessage = document.querySelector('.error-message');if (response.data.aName) {
+        name.innerHTML = 'Name: ' + response.data.aName;
+        genre.innerHTML = 'Genre: ' + response.data.genre;
+        jName.innerHTML = 'Japanese Name: ' + response.data.jName;
       } else {
         errorMessage.innerHTML = "This anime is not in our database"
       }
