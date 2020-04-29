@@ -1,6 +1,7 @@
+USE tempdb;
 CREATE TABLE Anime  
 (  
- aID int IDENTITY(1,1),  
+ aID int AUTO_INCREMENT PRIMARY KEY,  
  aName varchar (255),  
  jName varchar(255),  
  genre varchar(255),

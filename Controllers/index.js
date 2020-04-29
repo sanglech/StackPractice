@@ -1,7 +1,7 @@
 const fs = require('fs');
 const rawdata=fs.readFileSync('../Models/dbuser.json');
 const userInfo=JSON.parse(rawdata);
-var mssql = require('mssql');
+var mysql = require('mysql');
 const express = require('express'); // import express
 const app = express(); // initialize express
 const anime = require('../Models/Data.js'); // import data
@@ -11,14 +11,13 @@ const cors = require('cors'); // import cors package
 app.use(cors());
 
     // config for your database
-    var config = {
+    var con = mysql.createConnection({
       user: userInfo.user,
       password: userInfo.password,
-      server: "localhost", 
+      host: "localhost", 
       database: "tempdb"
-  };
-  mssql.connect(config, function (err) {
-    
+  });
+  con.connect(function (err) {
     if (err) console.log(err);
     else{
       console.log("Connected");
@@ -29,17 +28,16 @@ app.use(cors());
 app.get('/anime', function (req, res) {
   // store the query string parameter in animeName variable
   let animeName = req.query.name;
-  var request = new mssql.Request();
   var queryString=`SELECT * FROM Anime WHERE aName= '${animeName}'`; //Template literal example.
   //console.log("QUERYING: "+queryString);
-      request.query(queryString,function (err, results) {
-
+      con.query(queryString,function (err, results) {
+        //console.log("RESULTS "+JSON.stringify(results));
         if(results==null){
           res.send({"status": "error", "message": "This anime isn't in our database"})
         }
         else{
-          res.send(results.recordset[0]);
-          console.log(results.recordset[0]);
+          res.send(results[0]);
+          //console.log(results[0]);
         }
 
       });
